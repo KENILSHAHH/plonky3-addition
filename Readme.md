@@ -18,6 +18,14 @@ The main goal is to prove that the sum of two given numbers, `a` and `b`, is equ
 - **Execution Trace**: Contains the input values (`a`, `b`, and `c`) and outputs for verification.
 - **Prover and Verifier**: Uses Plonky3's `prove` and `verify` functions to prove and verify the computation.
 
+## Quick Start
+Start running the program which will eventually create a proof and verify it 
+
+``` bash
+git clone https://github.com/kenilshahh/plonky3-addition
+cargo run
+```
+
 ## Getting Started
 
 ### Step 1: Define the Addition AIR
@@ -55,7 +63,7 @@ impl<AB: AirBuilder> Air<AB> for AdditionAir {
 
 The `eval` function in `AdditionAir` enforces that `local[0] + local[1] == local[2]` (where `local[0]` is `a`, `local[1]` is `b`, and `local[2]` is `c`). This constraint ensures that the AIR (Algebraic Intermediate Representation) correctly represents the addition rule for any given inputs `a` and `b`, validating that their sum is equal to `c`.
 
-### Step 2: Generating the Execution Trace
+## Step 2: Generating the Execution Trace
 
 The **execution trace** is a matrix of values that represents the computation at each step. In this example, the trace matrix has 3 columns, one for each of `a`, `b`, and `c`, and contains rows corresponding to the number of steps in the proof. The `generate_addition_trace` function populates this matrix with values for `a`, `b`, and `c` in the first row, while the remaining rows are initialized to zero.
 
@@ -101,9 +109,3 @@ To prove and verify that a + b = c using Plonky3, we need to set up a configurat
 }
 ```
 
-## Step 4 
-Start running the program which will eventually create a proof and verify it 
-
-``` bash
-cargo run
-```
